@@ -344,8 +344,23 @@ def scene_aukus_sub(draw, box):
 
     # Conning tower & periscope
     draw.rectangle([cx - 24, hy0 - 14, cx + 14, hy0 + 2], fill="#2d333b")
-    draw.line([(cx - 4, hy0 - 14), (cx - 4, y0 + 18)], fill="#2d333b", width=3)
-    draw.line([(cx - 4, y0 + 18), (cx + 6, y0 + 18)], fill="#2d333b", width=3)
+    periscope_top = sea_y - 11
+    draw.line([(cx - 4, hy0 - 14), (cx - 4, periscope_top)], fill="#2d333b", width=2)
+    draw.line([(cx - 4, periscope_top), (cx + 2, periscope_top)], fill="#2d333b", width=2)
+
+    # Small muted-grey surface ship floating on the surface line at right
+    ship_x0, ship_x1 = x1 - 92, x1 - 22
+    draw.polygon(
+        [
+            (ship_x0, sea_y - 8),
+            (ship_x1, sea_y - 8),
+            (ship_x1 - 8, sea_y + 1),
+            (ship_x0 + 6, sea_y + 1),
+        ],
+        fill="#6f7782",
+    )
+    draw.rectangle([ship_x0 + 18, sea_y - 16, ship_x0 + 44, sea_y - 8], fill="#6f7782")
+    draw.rectangle([ship_x0 + 26, sea_y - 21, ship_x0 + 34, sea_y - 16], fill="#6f7782")
 
     # Propeller X at right end
     px, py = hx1 + 6, hy0 + 17
